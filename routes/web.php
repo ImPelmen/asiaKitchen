@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +11,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Example Routes
+Route::view('/', 'landing');
+Route::match(['get', 'post'], '/dashboard', function(){
+    return view('dashboard');
 });
+Route::view('/examples/plugin-helper', 'examples.plugin_helper');
+Route::view('/examples/plugin-init', 'examples.plugin_init');
+Route::view('/examples/blank', 'examples.blank');
