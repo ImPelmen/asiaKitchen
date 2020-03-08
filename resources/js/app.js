@@ -21,7 +21,7 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('modal-component', require('./components/ModalComponent.vue').default);
-Vue.component('admin-panel', require('./components/AdminPanel.cue').default);
+Vue.component('admin-panel', require('./components/AdminPanel.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
