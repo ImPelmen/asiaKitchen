@@ -4,7 +4,7 @@
 <div class="container">
     <div class="card">
         <div class="card-body m-2">
-            <modal-component></modal-component>
+            <product-list-component></product-list-component>
         </div>
     </div>
 </div>
