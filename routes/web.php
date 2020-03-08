@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,11 +13,19 @@
 |
 */
 
-// Example Routes
-Route::view('/', 'landing');
-Route::match(['get', 'post'], '/dashboard', function(){
-    return view('dashboard');
+Route::get('/', function () {
+    return view('welcome');
 });
-Route::view('/examples/plugin-helper', 'examples.plugin_helper');
-Route::view('/examples/plugin-init', 'examples.plugin_init');
-Route::view('/examples/blank', 'examples.blank');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::middleware(['auth', 'admin'])->namespace('Admin')->prefix('admin')->group(function () {
+    Route::get('/product', 'ProductController@index')->name('products.index');
+    Route::post('/product/store', 'ProductController@store')->name('products.store');
+    Route::get('/product/getproduct', 'ProductController@getProducts')->name('products.get');
+    Route::get('/product/{product}/publish', 'ProductController@changePublishStatus');
+});
