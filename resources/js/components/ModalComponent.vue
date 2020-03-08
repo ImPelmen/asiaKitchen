@@ -1,7 +1,6 @@
 <template>
 <div class="container">
     <div class="row">
-
         <div class="container">
             <h2>Все товары</h2>
             <!-- Trigger the modal with a button -->
