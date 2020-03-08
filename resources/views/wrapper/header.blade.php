@@ -12,7 +12,7 @@
             @if (Route::has('login'))
             @auth
             <li>
-                <a href="{{ url('/home') }}"><i class="fa fa-user-o"></i> My Account</a>
+                <a href="{{ url('/home') }}"><i class="fa fa-user-o"></i> {{ Auth::user()->name }}</a>
             </li>
             @else
             <li>
@@ -45,19 +45,7 @@
             <!-- /LOGO -->
 
             <!-- SEARCH BAR -->
-            <div class="col-md-6">
-            <div class="header-search">
-                <form>
-                <select class="input-select">
-                    <option value="0">All Categories</option>
-                    <option value="1">Category 01</option>
-                    <option value="1">Category 02</option>
-                </select>
-                <input class="input" placeholder="Search here">
-                <button class="search-btn">Search</button>
-                </form>
-            </div>
-            </div>
+            <search-bar></search-bar>
             <!-- /SEARCH BAR -->
 
             <!-- ACCOUNT -->
