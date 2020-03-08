@@ -79,7 +79,6 @@ export default {
         console.log('Component mounted.')
         let vue = this;
         axios.get('/admin/product/getproduct').then(function (response) {
-            console.log(response);
             vue.products = response.data.products.data;
             vue.categories = response.data.category;
         });
@@ -124,8 +123,11 @@ export default {
         changePublish(id) {
             let vue = this;
             axios.get('/admin/product/' + id + '/publish').then(function(response) {
-                console.log(response.data);
-                vue.getResults();
+                for(let product in vue.products) {
+                    if(vue.products[product].id == response.data.product.id) {
+                        vue.$set(vue.products,product , response.data.product)
+                    }
+                }
             });
         }
     }

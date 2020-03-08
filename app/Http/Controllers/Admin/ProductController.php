@@ -92,7 +92,7 @@ class ProductController extends Controller
     public function getProducts()
     {
         return [
-            'products' =>Product::with('categories')->orderBy('created_at')->paginate(10),
+            'products' =>Product::with('categories')->orderBy('created_at', 'DESC')->paginate(10),
             'category' => Category::all()
         ];
     }
@@ -101,6 +101,9 @@ class ProductController extends Controller
     {
         $product->is_publish = $product->is_publish ? 0 : 1;
         $product->save();
-        return ['flash' => 'Success publish saved'];
+        return [
+            'flash' => 'Success publish saved',
+            'product' => $product
+        ];
     }
 }
