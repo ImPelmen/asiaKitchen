@@ -35,21 +35,23 @@
         <!-- row -->
         <div class="row">
             <!-- LOGO -->
-            <div class="col-md-3">
-            <div class="header-logo">
-                <a href="/" class="logo">
-                <img src="./img/logo.png" alt="">
-                </a>
-            </div>
+            <div class="col-md-2  col-sm-12 col-xs-12">
+                <div class="header-logo">
+                    <a href="/" class="logo">
+                    <img src="./img/logo.png" alt="">
+                    </a>
+                </div>
             </div>
             <!-- /LOGO -->
 
             <!-- SEARCH BAR -->
-            <search-bar></search-bar>
+            <div class="col-md-7 col-sm-12 col-xs-12">
+                <search-bar></search-bar>
+            </div>
             <!-- /SEARCH BAR -->
 
             <!-- ACCOUNT -->
-            <div class="col-md-3 clearfix">
+            <div class="col-md-3  col-sm-12 col-xs-12">
             <div class="header-ctn">
                 <!-- Wishlist -->
                 <div>

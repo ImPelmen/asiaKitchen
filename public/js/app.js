@@ -2133,12 +2133,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
-    console.log('Component mounted.');
+    var vue = this;
+    axios.get('api/get/category').then(function (response) {
+      vue.categories = response.data;
+      console.log(vue.categories);
+    });
+  },
+  data: function data() {
+    return {
+      categories: []
+    };
   }
 });
 
@@ -38548,35 +38554,33 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6" }, [
-      _c("div", { staticClass: "header-search" }, [
-        _c("form", [
-          _c("select", { staticClass: "input-select" }, [
-            _c("option", { attrs: { value: "0" } }, [_vm._v("All Categories")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "1" } }, [_vm._v("Category 01")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "1" } }, [_vm._v("Category 02")])
-          ]),
+  return _c("div", { staticClass: "header-search" }, [
+    _c("form", [
+      _c(
+        "select",
+        { staticClass: "input-select" },
+        [
+          _c("option", { attrs: { value: "0" } }, [_vm._v("Все категорий")]),
           _vm._v(" "),
-          _c("input", {
-            staticClass: "input",
-            attrs: { placeholder: "Search here" }
-          }),
-          _vm._v(" "),
-          _c("button", { staticClass: "search-btn" }, [_vm._v("Search")])
-        ])
-      ])
+          _vm._l(_vm.categories, function(category) {
+            return _c("option", { domProps: { value: category.id } }, [
+              _vm._v(_vm._s(category.title))
+            ])
+          })
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "input",
+        attrs: { placeholder: "Search here" }
+      }),
+      _vm._v(" "),
+      _c("button", { staticClass: "search-btn" }, [_vm._v("Search")])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 

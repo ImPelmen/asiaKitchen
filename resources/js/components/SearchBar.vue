@@ -1,23 +1,29 @@
 <template>
-    <div class="col-md-6">
-        <div class="header-search">
-            <form>
-                <select class="input-select">
-                    <option value="0">All Categories</option>
-                    <option value="1">Category 01</option>
-                    <option value="1">Category 02</option>
-                </select>
-                <input class="input" placeholder="Search here">
-                <button class="search-btn">Search</button>
-            </form>
-        </div>
+    <div class="header-search">
+        <form>
+            <select class="input-select">
+                <option value="0">Все категорий</option>
+                <option v-for="category of categories" :value="category.id">{{ category.title }}</option>
+            </select>
+            <input class="input" placeholder="Search here">
+            <button class="search-btn">Search</button>
+        </form>
     </div>
 </template>
 
 <script>
     export default {
         mounted() {
-            console.log('Component mounted.')
+            let vue = this;
+            axios.get('api/get/category').then(function(response) {
+                vue.categories = response.data;
+                console.log(vue.categories);
+            });
+        },
+        data() {
+            return {
+                categories: []
+            }
         }
     }
 </script>
