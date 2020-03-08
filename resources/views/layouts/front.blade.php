@@ -21,7 +21,8 @@
     <link type="text/css" rel="stylesheet" href="{{ asset('css/nouislider.min.css') }}"/>
 
     <!-- Font Awesome Icon -->
-    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
+    <!-- <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}"> -->
     
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="{{ asset('css/style.css') }}"/>
