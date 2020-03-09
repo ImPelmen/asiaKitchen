@@ -24,7 +24,7 @@
                         <td>{{ product.title }}</td>
                         <td>{{ product.description }}</td>
                         <td>KZT {{ product.price }}</td>
-                        <td>{{ product.id }}</td>
+                        <td>{{ product.categories.map(function(el) { return el.title}).join(', ') }}</td>
                         <td>
                             <span class="badge badge-success" v-if="product.is_publish" @click="changePublish(product.id)"><i class="fa fa-check-circle-o fa-2x"></i></span>
                             <span class="badge badge-danger" v-else="product.is_publish" @click="changePublish(product.id)"><i class="fa fa-times-circle-o fa-2x"></i></span>
@@ -51,6 +51,7 @@
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">Категория</label>
                                 <select class="form-control custom-select my-1 mr-sm-2" name="category" v-model="category" id="exampleFormControlSelect1" required>
+                                    <option value="0">Выберите категорию</option>
                                     <option v-for="item in categories" :key="item.id" :value="item.id">{{ item.title }}</option>
                                 </select>
                             </div>

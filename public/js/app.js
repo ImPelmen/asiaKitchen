@@ -3707,6 +3707,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 Vue.component('pagination', __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js"));
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
@@ -100936,7 +100937,17 @@ var render = function() {
                   _vm._v(" "),
                   _c("td", [_vm._v("KZT " + _vm._s(product.price))]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(product.id))]),
+                  _c("td", [
+                    _vm._v(
+                      _vm._s(
+                        product.categories
+                          .map(function(el) {
+                            return el.title
+                          })
+                          .join(", ")
+                      )
+                    )
+                  ]),
                   _vm._v(" "),
                   _c("td", [
                     product.is_publish
@@ -101078,14 +101089,20 @@ var render = function() {
                               }
                             }
                           },
-                          _vm._l(_vm.categories, function(item) {
-                            return _c(
-                              "option",
-                              { key: item.id, domProps: { value: item.id } },
-                              [_vm._v(_vm._s(item.title))]
-                            )
-                          }),
-                          0
+                          [
+                            _c("option", { attrs: { value: "0" } }, [
+                              _vm._v("Выберите категорию")
+                            ]),
+                            _vm._v(" "),
+                            _vm._l(_vm.categories, function(item) {
+                              return _c(
+                                "option",
+                                { key: item.id, domProps: { value: item.id } },
+                                [_vm._v(_vm._s(item.title))]
+                              )
+                            })
+                          ],
+                          2
                         )
                       ]),
                       _vm._v(" "),
