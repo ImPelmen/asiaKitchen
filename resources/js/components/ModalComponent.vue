@@ -113,7 +113,6 @@ export default {
             vue.products = response.data.products.data;
             vue.categories = response.data.category;
         });
-
         this.getResults();
     },
     data() {

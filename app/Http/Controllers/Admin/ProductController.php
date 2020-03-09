@@ -20,7 +20,6 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
         return view('product.index');
     }
 
@@ -51,7 +50,7 @@ class ProductController extends Controller
         foreach($request->images as $image) {
             $iamgePath = Storage::disk('public')->put(auth()->user()->email, $image);
             Image::create([
-                'image_path' => '/public/' . $iamgePath,
+                'image_path' => '/storage/' . $iamgePath,
                 'product_id' => $product->id 
             ]);
         }
@@ -107,7 +106,7 @@ class ProductController extends Controller
     public function getProducts()
     {
         return [
-            'products' =>Product::with('categories')->orderBy('created_at', 'DESC')->paginate(10),
+            'products' =>Product::with('categories')->with('images')->orderBy('created_at', 'DESC')->paginate(10),
             'category' => Category::all()
         ];
     }

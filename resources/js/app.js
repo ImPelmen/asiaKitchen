@@ -23,14 +23,13 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('modal-component', require('./components/ModalComponent.vue').default);
 Vue.component('admin-panel', require('./components/AdminPanel.vue').default);
 Vue.component('search-bar', require('./components/SearchBar.vue').default);
+Vue.component('product-component', require('./components/ProductComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-import VueLazyload from 'vue-lazyload'
-Vue.use(VueLazyload)
 
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
