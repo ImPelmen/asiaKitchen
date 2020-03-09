@@ -29,6 +29,14 @@ Vue.component('search-bar', require('./components/SearchBar.vue').default);
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+import VueLazyload from 'vue-lazyload'
+Vue.use(VueLazyload)
+
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
+Vue.use(ElementUI);
+
 
 const app = new Vue({
     el: '#app',

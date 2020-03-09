@@ -6,7 +6,10 @@ use App\Models\Product;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Models\Category;
+use App\Models\Image;
+use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -37,11 +40,23 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request)
+    public function store(Request $request)
     {
-        $product = Product::create($request->all());
+        $product = new Product();
+        $product->title = $request->title;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->save();
         $product->categories()->attach($request->category);
-        return ['flash' => 'Success saved'];
+        foreach($request->images as $image) {
+            $iamgePath = Storage::disk('public')->put(auth()->user()->email, $image);
+            Image::create([
+                'image_path' => '/public/' . $iamgePath,
+                'product_id' => $product->id 
+            ]);
+        }
+       
+        return ['flash' => 'Success saved', 'product' => $product];
     }
 
     /**
@@ -105,5 +120,10 @@ class ProductController extends Controller
             'flash' => 'Success publish saved',
             'product' => $product
         ];
+    }
+
+    public function storeImages(Product $product) 
+    {
+        dd($product->toArray());
     }
 }
