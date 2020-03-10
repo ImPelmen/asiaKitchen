@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
-use App\Models\Product;
+////controller
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ProductRequest;
+///Models
+use App\Models\Product;
 use App\Models\Category;
+///Requests
+use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -63,7 +65,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        dd($request);
     }
 
     /**
@@ -84,9 +86,9 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function remove(Product $product)
     {
-        //
+        dd($request);
     }
 
     public function getProducts()

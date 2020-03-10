@@ -1975,6 +1975,147 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 Vue.component('pagination', __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js"));
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
@@ -1995,7 +2136,14 @@ Vue.component('pagination', __webpack_require__(/*! laravel-vue-pagination */ ".
       price: null,
       category: null,
       description: "",
-      laravelData: {}
+      laravelData: {},
+      activeTab: 'production',
+      editedProduct: {},
+      editedCategory: {},
+      newCategory: {
+        id: null,
+        title: ''
+      }
     };
   },
   methods: {
@@ -2033,6 +2181,142 @@ Vue.component('pagination', __webpack_require__(/*! laravel-vue-pagination */ ".
           }
         }
       });
+    },
+    isActive: function isActive(menuItem) {
+      return this.activeTab == menuItem;
+    },
+    setActive: function setActive(menuItem) {
+      this.activeTab = menuItem;
+    },
+    setEdited: function setEdited(id, item) {
+      if (item == 'product') {
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+          for (var _iterator = this.products[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var product = _step.value;
+
+            if (product.id == id) {
+              this.editedProduct = product;
+            }
+          }
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+              _iterator["return"]();
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
+          }
+        }
+      } else if (item == 'category') {
+        var _iteratorNormalCompletion2 = true;
+        var _didIteratorError2 = false;
+        var _iteratorError2 = undefined;
+
+        try {
+          for (var _iterator2 = this.categories[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+            var category = _step2.value;
+
+            if (category.id == id) {
+              this.editedCategory = category;
+            }
+          }
+        } catch (err) {
+          _didIteratorError2 = true;
+          _iteratorError2 = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion2 && _iterator2["return"] != null) {
+              _iterator2["return"]();
+            }
+          } finally {
+            if (_didIteratorError2) {
+              throw _iteratorError2;
+            }
+          }
+        }
+      }
+    },
+    setDeleted: function setDeleted(id, item) {
+      if (item == 'product') {
+        var _iteratorNormalCompletion3 = true;
+        var _didIteratorError3 = false;
+        var _iteratorError3 = undefined;
+
+        try {
+          for (var _iterator3 = this.products[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+            var product = _step3.value;
+
+            if (product.id == id) {
+              this.deletedProductId = id;
+            }
+          }
+        } catch (err) {
+          _didIteratorError3 = true;
+          _iteratorError3 = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion3 && _iterator3["return"] != null) {
+              _iterator3["return"]();
+            }
+          } finally {
+            if (_didIteratorError3) {
+              throw _iteratorError3;
+            }
+          }
+        }
+      } else if (item = 'category') {
+        var _iteratorNormalCompletion4 = true;
+        var _didIteratorError4 = false;
+        var _iteratorError4 = undefined;
+
+        try {
+          for (var _iterator4 = this.categories[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+            var category = _step4.value;
+
+            if (category.id == id) {
+              this.deletedCategoryId = id;
+            }
+          }
+        } catch (err) {
+          _didIteratorError4 = true;
+          _iteratorError4 = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion4 && _iterator4["return"] != null) {
+              _iterator4["return"]();
+            }
+          } finally {
+            if (_didIteratorError4) {
+              throw _iteratorError4;
+            }
+          }
+        }
+      }
+    },
+    remove: function remove(item) {// if (item == 'product') {
+      //     axios.post('/')
+      // }
+    },
+    store: function store(newThing, item) {
+      if (item == 'product') {//
+      } else if (item == 'category') {
+        console.log(item);
+        console.log(this.newCategory);
+        axios.post('/admin/category/store', {
+          category: newThing
+        }).then(function (response) {
+          console.log(response.data.categories);
+        });
+      }
     }
   }
 });
@@ -38049,102 +38333,811 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container mt-5", attrs: { id: "app" } }, [
+    _c("div", { staticClass: "block" }, [
+      _c("ul", { staticClass: "nav nav-tabs nav-tabs-alt js-tabs-enabled" }, [
+        _c("li", { staticClass: "nav-item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "nav-link",
+              class: { active: _vm.isActive("production") },
+              attrs: { href: "#production" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.setActive("production")
+                }
+              }
+            },
+            [_vm._v(" Продукция")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "nav-item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "nav-link",
+              class: { active: _vm.isActive("categories") },
+              attrs: { href: "#categories" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.setActive("categories")
+                }
+              }
+            },
+            [_vm._v(" Категории")]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "tab-content py-3", attrs: { id: "myTabContent" } },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "tab-pane fade",
+              class: { "active show": _vm.isActive("production") },
+              attrs: { id: "home" }
+            },
+            [
+              _c("div", { staticClass: "container" }, [
+                _c(
+                  "div",
+                  { staticClass: "row" },
+                  [
+                    _c("div", { staticClass: "container" }, [
+                      _vm._m(0),
+                      _vm._v(" "),
+                      _c("table", { staticClass: "table table-bordered" }, [
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _c(
+                          "tbody",
+                          _vm._l(_vm.products, function(product) {
+                            return _c("tr", { key: product.id }, [
+                              _c("td", [_vm._v(_vm._s(product.id))]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(product.title))]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(product.description))]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v("KZT " + _vm._s(product.price))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(product.id))]),
+                              _vm._v(" "),
+                              _c("td", [
+                                product.is_publish
+                                  ? _c(
+                                      "span",
+                                      {
+                                        staticClass: "badge badge-success",
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.changePublish(product.id)
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c("i", {
+                                          staticClass:
+                                            "fa fa-check-circle-o fa-2x"
+                                        })
+                                      ]
+                                    )
+                                  : _c(
+                                      "span",
+                                      {
+                                        staticClass: "badge badge-danger",
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.changePublish(product.id)
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c("i", {
+                                          staticClass:
+                                            "fa fa-times-circle-o fa-2x"
+                                        })
+                                      ]
+                                    )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("div", { staticClass: "btn-group" }, [
+                                  _c(
+                                    "button",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "tooltip",
+                                          rawName: "v-tooltip",
+                                          value: "Редактировать",
+                                          expression: "'Редактировать'"
+                                        }
+                                      ],
+                                      staticClass:
+                                        "btn btn-sm btn-outline-primary",
+                                      attrs: { type: "button" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.setEdited(
+                                            product.id,
+                                            "product"
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _c("i", {
+                                        staticClass: "fa fa-fw fa-pencil-alt"
+                                      })
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "tooltip",
+                                          rawName: "v-tooltip",
+                                          value: "Удалить",
+                                          expression: "'Удалить'"
+                                        }
+                                      ],
+                                      staticClass:
+                                        "btn btn-sm btn-outline-primary",
+                                      attrs: {
+                                        type: "button",
+                                        "data-toggle": "modal",
+                                        "data-target": "#deleteProductModal"
+                                      },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.setDeleted(
+                                            product.id,
+                                            "product"
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _c("i", {
+                                        staticClass: "fa fa-fw far fa-trash-alt"
+                                      })
+                                    ]
+                                  )
+                                ])
+                              ])
+                            ])
+                          }),
+                          0
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("pagination", {
+                      staticClass: "ml-3",
+                      attrs: { data: _vm.laravelData },
+                      on: { "pagination-change-page": _vm.getResults }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "modal fade",
+                        attrs: { id: "createProductModal", role: "dialog" }
+                      },
+                      [
+                        _c("div", { staticClass: "modal-dialog" }, [
+                          _c("div", { staticClass: "modal-content" }, [
+                            _vm._m(2),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "modal-body" }, [
+                              _c("form", { staticClass: "m-2" }, [
+                                _c("div", { staticClass: "form-group" }, [
+                                  _c(
+                                    "label",
+                                    {
+                                      attrs: { for: "exampleFormControlInput1" }
+                                    },
+                                    [_vm._v("Название продукта")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.title,
+                                        expression: "title"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: {
+                                      type: "text",
+                                      name: "title",
+                                      id: "exampleFormControlInput1",
+                                      placeholder: "Введите название"
+                                    },
+                                    domProps: { value: _vm.title },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.title = $event.target.value
+                                      }
+                                    }
+                                  })
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "form-group" }, [
+                                  _c(
+                                    "label",
+                                    {
+                                      attrs: {
+                                        for: "exampleFormControlSelect1"
+                                      }
+                                    },
+                                    [_vm._v("Категория")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "select",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.category,
+                                          expression: "category"
+                                        }
+                                      ],
+                                      staticClass:
+                                        "form-control custom-select my-1 mr-sm-2",
+                                      attrs: {
+                                        name: "category",
+                                        id: "exampleFormControlSelect1",
+                                        required: ""
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          var $$selectedVal = Array.prototype.filter
+                                            .call(
+                                              $event.target.options,
+                                              function(o) {
+                                                return o.selected
+                                              }
+                                            )
+                                            .map(function(o) {
+                                              var val =
+                                                "_value" in o
+                                                  ? o._value
+                                                  : o.value
+                                              return val
+                                            })
+                                          _vm.category = $event.target.multiple
+                                            ? $$selectedVal
+                                            : $$selectedVal[0]
+                                        }
+                                      }
+                                    },
+                                    _vm._l(_vm.categories, function(item) {
+                                      return _c(
+                                        "option",
+                                        {
+                                          key: item.id,
+                                          domProps: { value: item.id }
+                                        },
+                                        [_vm._v(_vm._s(item.title))]
+                                      )
+                                    }),
+                                    0
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "form-group" }, [
+                                  _c(
+                                    "label",
+                                    {
+                                      attrs: { for: "exampleFormControlInput1" }
+                                    },
+                                    [_vm._v("Цена продукта")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.price,
+                                        expression: "price"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: {
+                                      type: "decimal",
+                                      name: "price",
+                                      id: "exampleFormControlInput1",
+                                      placeholder: "Цена название"
+                                    },
+                                    domProps: { value: _vm.price },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.price = $event.target.value
+                                      }
+                                    }
+                                  })
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "form-group" }, [
+                                  _c(
+                                    "label",
+                                    {
+                                      attrs: {
+                                        for: "exampleFormControlTextarea1"
+                                      }
+                                    },
+                                    [_vm._v("Введите описания")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("textarea", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.description,
+                                        expression: "description"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    attrs: {
+                                      name: "description",
+                                      id: "exampleFormControlTextarea1",
+                                      rows: "3",
+                                      placeholder: "Описание"
+                                    },
+                                    domProps: { value: _vm.description },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.description = $event.target.value
+                                      }
+                                    }
+                                  })
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass:
+                                      "btn btn-sm btn-success float-right",
+                                    attrs: {
+                                      type: "submit",
+                                      "data-dismiss": "modal"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                        return _vm.storeProduct($event)
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c("i", { staticClass: "far fa-save" }),
+                                    _vm._v(" Сохранить")
+                                  ]
+                                )
+                              ])
+                            ])
+                          ])
+                        ])
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ])
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "modal fade",
+          staticStyle: { display: "none" },
+          attrs: {
+            id: "deleteProductModal",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-labelledby": "modal-block-fadein",
+            "aria-hidden": "true"
+          }
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "modal-dialog", attrs: { role: "document" } },
+            [
+              _c("div", { staticClass: "modal-content" }, [
+                _c(
+                  "div",
+                  { staticClass: "block block-themed block-transparent mb-0" },
+                  [
+                    _vm._m(3),
+                    _vm._v(" "),
+                    _vm._m(4),
+                    _vm._v(" "),
+                    _c(
+                      "form",
+                      {
+                        staticClass: "form-horizontal",
+                        attrs: { id: "delete" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "block-content block-content-full text-right border-top"
+                          },
+                          [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-sm btn-light",
+                                attrs: {
+                                  type: "button",
+                                  "data-dismiss": "modal"
+                                }
+                              },
+                              [_vm._v("Отмена")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-sm btn-danger",
+                                attrs: {
+                                  type: "button",
+                                  "data-dismiss": "modal"
+                                },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.remove("product")
+                                  }
+                                }
+                              },
+                              [_vm._v("Удалить")]
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ]
+                )
+              ])
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "tab-pane fade",
+          class: { "active show": _vm.isActive("categories") },
+          attrs: { id: "profile" }
+        },
+        [
+          _c("div", { staticClass: "container" }, [
+            _c(
+              "div",
+              { staticClass: "row" },
+              [
+                _c("div", { staticClass: "container" }, [
+                  _vm._m(5),
+                  _vm._v(" "),
+                  _c("table", { staticClass: "table table-bordered" }, [
+                    _vm._m(6),
+                    _vm._v(" "),
+                    _c(
+                      "tbody",
+                      _vm._l(_vm.categories, function(category) {
+                        return _c("tr", { key: category.id }, [
+                          _c("td", [_vm._v(_vm._s(category.id))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(category.title))]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm.product.is_publish
+                              ? _c(
+                                  "span",
+                                  {
+                                    staticClass: "badge badge-success",
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.changePublish(_vm.product.id)
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c("i", {
+                                      staticClass: "fa fa-check-circle-o fa-2x"
+                                    })
+                                  ]
+                                )
+                              : _c(
+                                  "span",
+                                  {
+                                    staticClass: "badge badge-danger",
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.changePublish(_vm.product.id)
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c("i", {
+                                      staticClass: "fa fa-times-circle-o fa-2x"
+                                    })
+                                  ]
+                                )
+                          ])
+                        ])
+                      }),
+                      0
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("pagination", {
+                  staticClass: "ml-3",
+                  attrs: { data: _vm.laravelData },
+                  on: { "pagination-change-page": _vm.getResults }
+                }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "modal fade",
+                    attrs: { id: "createCategoryModal", role: "dialog" }
+                  },
+                  [
+                    _c("div", { staticClass: "modal-dialog" }, [
+                      _c("div", { staticClass: "modal-content" }, [
+                        _vm._m(7),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "modal-body" }, [
+                          _c("form", { staticClass: "m-2" }, [
+                            _c("div", { staticClass: "form-group" }, [
+                              _c(
+                                "label",
+                                { attrs: { for: "exampleFormControlInput1" } },
+                                [_vm._v("Название категории")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.newCategory.title,
+                                    expression: "newCategory.title"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "text",
+                                  name: "title",
+                                  id: "exampleFormControlInput1",
+                                  placeholder: "Введите название"
+                                },
+                                domProps: { value: _vm.newCategory.title },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.newCategory,
+                                      "title",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass:
+                                  "btn btn-sm btn-success float-right",
+                                attrs: {
+                                  type: "submit",
+                                  "data-dismiss": "modal"
+                                },
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.store(
+                                      _vm.newCategory,
+                                      "category"
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _c("i", { staticClass: "far fa-save" }),
+                                _vm._v(" Сохранить")
+                              ]
+                            )
+                          ])
+                        ])
+                      ])
+                    ])
+                  ]
+                )
+              ],
+              1
+            )
+          ])
+        ]
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container mt-5", attrs: { id: "app" } }, [
-      _c("div", { staticClass: "block" }, [
-        _c(
-          "ul",
-          {
-            staticClass: "nav nav-tabs nav-tabs-block js-tabs-enabled",
-            attrs: { "data-toggle": "tabs", role: "tablist" }
-          },
-          [
-            _c("li", { staticClass: "nav-item" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "nav-link active",
-                  attrs: { href: "#btabs-static-home" }
-                },
-                [_vm._v("Home")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "nav-item" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "nav-link",
-                  attrs: { href: "#btabs-static-profile" }
-                },
-                [_vm._v("Profile")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "nav-item ml-auto" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "nav-link",
-                  attrs: { href: "#btabs-static-settings" }
-                },
-                [_c("i", { staticClass: "si si-settings" })]
-              )
-            ])
-          ]
-        ),
+    return _c("div", { staticClass: "float-right mb-2 mt-2" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-outline-success btn-sm",
+          attrs: {
+            type: "button",
+            "data-toggle": "modal",
+            "data-target": "#createProductModal"
+          }
+        },
+        [_c("i", { staticClass: "fa fa-plus" }), _vm._v(" Создать")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("ID")]),
         _vm._v(" "),
-        _c("div", { staticClass: "block-content tab-content" }, [
-          _c(
-            "div",
-            {
-              staticClass: "tab-pane active",
-              attrs: { id: "btabs-static-home", role: "tabpanel" }
-            },
-            [
-              _c("h4", { staticClass: "font-w400" }, [_vm._v("Home Content")]),
-              _vm._v(" "),
-              _c("p", [_vm._v("...")])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "tab-pane",
-              attrs: { id: "btabs-static-profile", role: "tabpanel" }
-            },
-            [
-              _c("h4", { staticClass: "font-w400" }, [
-                _vm._v("Profile Content")
-              ]),
-              _vm._v(" "),
-              _c("p", [_vm._v("...")])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "tab-pane",
-              attrs: { id: "btabs-static-settings", role: "tabpanel" }
-            },
-            [
-              _c("h4", { staticClass: "font-w400" }, [
-                _vm._v("Settings Content")
-              ]),
-              _vm._v(" "),
-              _c("p", [_vm._v("...")])
-            ]
-          )
-        ])
+        _c("th", [_vm._v("Название")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Описание")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Цена")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Категория")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Статус")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Действия")])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("×")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "block-header bg-primary-dark" }, [
+      _c("h3", { staticClass: "block-title" }, [_vm._v("Удалить продукт?")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "block-options" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn-block-option",
+            attrs: {
+              type: "button",
+              "data-dismiss": "modal",
+              "aria-label": "Close"
+            }
+          },
+          [_c("i", { staticClass: "fa fa-fw fa-times" })]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "block-content font-size-sm" }, [
+      _c("p", [
+        _vm._v("Если Вы удалите продукт, то Вы не сможете вернуть его обратно.")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "float-right mb-2 mt-2" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-outline-success btn-sm",
+          attrs: {
+            type: "button",
+            "data-toggle": "modal",
+            "data-target": "#createCategoryModal"
+          }
+        },
+        [_c("i", { staticClass: "fa fa-plus" }), _vm._v(" Создать")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Название")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("×")]
+      )
     ])
   }
 ]
