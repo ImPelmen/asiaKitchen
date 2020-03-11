@@ -54,8 +54,7 @@ class ProductController extends Controller
                 'product_id' => $product->id 
             ]);
         }
-       
-        return ['flash' => 'Success saved', 'product' => $product];
+        return ['flash' => 'Success saved'];
     }
 
     /**
@@ -106,7 +105,7 @@ class ProductController extends Controller
     public function getProducts()
     {
         return [
-            'products' =>Product::with('categories')->with('images')->orderBy('created_at', 'DESC')->paginate(10),
+            'products' =>Product::with('categories')->with('images')->orderBy('created_at', 'DESC')->paginate(1),
             'category' => Category::all()
         ];
     }
@@ -119,10 +118,5 @@ class ProductController extends Controller
             'flash' => 'Success publish saved',
             'product' => $product
         ];
-    }
-
-    public function storeImages(Product $product) 
-    {
-        dd($product->toArray());
     }
 }

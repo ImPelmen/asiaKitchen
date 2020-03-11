@@ -13,7 +13,7 @@ class CreateProductCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_category', function (Blueprint $table) {
+        Schema::create('category_product', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('product_id');
             $table->bigInteger('category_id');
@@ -28,6 +28,6 @@ class CreateProductCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_category');
+        Schema::dropIfExists('category_product');
     }
 }

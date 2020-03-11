@@ -20,8 +20,7 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('modal-component', require('./components/ModalComponent.vue').default);
-Vue.component('admin-panel', require('./components/AdminPanel.vue').default);
+Vue.component('product-list-component', require('./components/ProductListComponent.vue').default);
 Vue.component('search-bar', require('./components/SearchBar.vue').default);
 Vue.component('product-component', require('./components/ProductComponent.vue').default);
 
